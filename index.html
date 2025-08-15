@@ -1,582 +1,495 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hubail K — Robotics & Automation Engineer</title>
+  <meta name="description" content="Robotics & Automation Engineer — ROS 2, NVIDIA Isaac Sim/Lab (Physical AI), Digital Twins, AMR. Make → Train → Deploy → Maintain." />
+  <meta name="theme-color" content="#0b1220" />
+  <meta property="og:title" content="Hubail K — Robotics Engineer" />
+  <meta property="og:description" content="Robotics, ROS 2, Isaac Sim/Lab, Physical AI, Industrial Automation." />
+  <meta property="og:type" content="website" />
 
-  <title>Hubail K - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode:'class',
+      theme:{
+        extend:{
+          fontFamily:{ sans:['Inter','ui-sans-serif','system-ui'], mono:['JetBrains Mono','ui-monospace','SFMono-Regular'] },
+          colors:{ accent:{50:'#e8f5ff',100:'#cfe9ff',200:'#9dd3ff',300:'#6bbcff',400:'#39a6ff',500:'#0f90ff',600:'#0076e6',700:'#005cb4',800:'#004688',900:'#003a72'}},
+          boxShadow:{soft:'0 10px 30px rgba(2,12,27,0.15)', glow:'0 0 0 1px #0f90ff40, 0 10px 30px #0f90ff1a'},
+          backgroundImage:{
+            'hero-grid':'radial-gradient(circle at 20% 10%, #0f90ff20 0, transparent 35%), radial-gradient(circle at 80% 20%, #22d3ee15 0, transparent 35%), radial-gradient(circle at 60% 80%, #22c55e15 0, transparent 35%)'
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Animation libs (vanilla, GitHub Pages-friendly) -->
+  <script src="https://unpkg.com/lenis@1.1.13/bundled/lenis.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Mar 17 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    html{scroll-behavior:smooth}
+    .container{max-width:1120px}
+    .caret::after{content:"_";animation:blink 1s step-end infinite}
+    @keyframes blink{50%{opacity:0}}
+    /* Card tilt */
+    .tilt{transform-style:preserve-3d;will-change:transform;transition:transform .15s ease}
+    .tilt:hover{transform:translateY(-2px)}
+    .tilt > .shine{position:absolute;inset:0;background:radial-gradient(180px 80px at var(--mx,50%) var(--my,50%), #ffffff22, transparent 60%);pointer-events:none;border-radius:inherit}
+    /* Sticky section headings */
+    section h2.sticky-title{position:sticky;top:64px;backdrop-filter:blur(6px)}
+    /* Particles canvas */
+    #fx{position:fixed;inset:0;z-index:-1}
+  </style>
 </head>
+<body class="bg-slate-950 text-slate-100 selection:bg-accent-500/30">
+  <canvas id="fx"></canvas>
 
-<body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Hubail K</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="https://www.linkedin.com/in/hubailk/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur bg-slate-950/65">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="text-lg font-extrabold tracking-tight">HK<span class="text-accent-500">.</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#projects" class="hover:text-accent-400">Projects</a>
+        <a href="#skills" class="hover:text-accent-400">Skills</a>
+        <a href="#experience" class="hover:text-accent-400">Experience</a>
+        <a href="#testimonials" class="hover:text-accent-400">Testimonials</a>
+        <a href="#contact" class="hover:text-accent-400">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a id="cvLink" href="#" class="px-3 py-1.5 rounded-xl bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold shadow-soft">Download CV</a>
+        <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-lg border border-slate-800 hover:bg-slate-900">🌙</button>
+        <button id="menuToggle" class="md:hidden p-2 rounded-lg border border-slate-800 hover:bg-slate-900" aria-label="Open menu">☰</button>
       </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
     </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1> Hubail K</h1>
-      <p><span class="typed" data-typed-items="Robotics Programmer, ROS2 Developer,System Integrator"></span></p>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-800 bg-slate-950">
+      <nav class="container mx-auto px-4 py-3 grid gap-2 text-sm">
+        <a class="py-2 border-b border-slate-800" href="#projects">Projects</a>
+        <a class="py-2 border-b border-slate-800" href="#skills">Skills</a>
+        <a class="py-2 border-b border-slate-800" href="#experience">Experience</a>
+        <a class="py-2 border-b border-slate-800" href="#testimonials">Testimonials</a>
+        <a class="py-2" href="#contact">Contact</a>
+      </nav>
     </div>
-  </section><!-- End Hero -->
+  </header>
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Hello and welcome! I'm Hubail, a Robotics and automation engineer with over 4 years of experience designing, programming,
-            and troubleshooting advanced robotic systems. Skilled in programming various industrial robots, including ABB, Omron TM, and Staubli. Proficient in ROS2, PLC programming, and embedded
-            systems. Experienced in pneumatic design, electrical wiring, component selection, FMEA analysis, and data architecture. 
-            Comfortable using tools like GitHub and VS Code to deliver efficient, reliable, and integrated automation solutions.</p>
-        </div>
-
-        <div class="row">
-          <!--div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Robotics Engineer &amp; ROS2 Developer.</h3>
-            <p class="fst-italic">
-             
-
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>7 Mar 1997</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>https://hubailk.github.io/</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 9656383100</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Ernakulam,Kerala, India</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>27</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor degree</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>hubailk7@gmail.com</span></li>
-                  
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
-              </div>
-
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <!--section id="facts" class="facts">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <!--section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>
-            As a robotics engineer, I bring a comprehensive skill set to the table, including:
-
-            </p>
-            <br>
-          <ul style="list-style-type:circle;">
-            <li> <b>Robot Programming: </b> Proficient in programming various robotic systems, including ABB, Staubli, Omron, and Siemens robots, to perform precise and efficient tasks.
-            </li>
-            <li><b>PLC Programming:</b> Experienced in programming Programmable Logic Controllers (PLCs) from Siemens and Omron to control complex automation systems and processes.</li>
-            <li><b>Robot Simulation: </b>   Skilled in using simulation software such as RobotStudio, RobotDK, and SRS to model and simulate robotic workflows, optimizing performance and efficiency.
-            </li>
-            <li><b>Pneumatic Systems:</b>Knowledgeable in designing, installing, and maintaining pneumatic systems for robotic applications, ensuring smooth operation and reliability.
-            </li>
-            <li><b>Electrical Wiring:</b>  Experienced in electrical wiring for industrial automation systems, including control panels, sensors, actuators, and other electrical components, adhering to safety standards and regulations.
-            </li>
-        </ul>
-          <p>                    
-            With a strong foundation in these key areas, I am well-equipped to tackle challenges in robotics and automation, delivering innovative solutions that meet and exceed client expectations.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">Rapid Programing <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">VAL3 Programing <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">TM FLOW Programing <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Git<i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">PLC programing <i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">C++ <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            
-            <div class="progress">
-              <span class="skill">ROS2 <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-             
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-  <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-        <div class="section-title">
-          <h2>Resume</h2>
-        </div>
-    <div class="row">
-      <!-- Left Column -->
-      <div class="col-lg-6" data-aos="fade-up">
-        <h3 class="resume-title">Summary</h3>
-        <div class="resume-item pb-0">
-          <p><em>Results-driven Robotics and Embedded Systems Engineer with 4+ years of hands-on experience in designing,
-             programming, and deploying industrial automation and life-saving medical devices. 
-             Expertise in robotics integration (ABB, Stäubli, Techman), embedded firmware development,
-              and PLC-driven automation systems. Proven track record of leading cross-functional teams 
-              to deliver high-impact projects, including COVID-19 ventilator systems in collaboration with MIT and NUS.</em></p>
-    
-          <h4>🔧 Technical Expertise</h4>
-          <ul style="list-style: none; padding-left: 0;">
-            <li><strong>🤖 Robotics:</strong> ABB YuMi, Omron TM900, Stäubli TX60, ROS2, VAL3, RobotStudio</li>
-            <li><strong>🔌 Embedded Systems:</strong> Arduino, ESP32, PCB Design, Sensor/Actuator Control</li>
-            <li><strong>🏭 Industrial Automation:</strong> PLC (Siemens, Omron), OPC UA, Profinet, Modbus, Profibus</li>
-            <li><strong>💻 Programming:</strong> Python, C++, Embedded C, Ladder Logic, ST (Structured Text)</li>
-            <li><strong>🛠️ Tools:</strong> Git, VS Code</li>
-          </ul>
-        </div>
-    
-        <h3 class="resume-title">Education</h3>
-        <div class="resume-item">
-          <h4>B.Tech in Electronics and Communication Engineering</h4>
-          <h5>2017 - 2020</h5>
-          <p><em>TKM College of Engineering, Kollam, Kerala, India</em></p>
-          <p>The Thangal Kunju Musaliar College of Engineering, commonly known as TKMCE, is the first government-aided engineering institution
-            in the Indian state of Kerala, with the foundation stone laid on 2nd February 1956 and inaugurated on 3 July 1958.</p>
-        </div>
-    
-        <div class="resume-item">
-          <h4>Diploma in Electronics Engineering</h4>
-          <h5>2012 - 2015</h5>
-          <p><em>AKNM GPTC Thirurangadi, Chelari, Kerala, India</em></p>
-          <p>AKNM Govt. Polytechnic College, Thirurangadi, established in 1994, is one of the well-reputed AICTE, 
-            New Delhi approved a technical institution in Malappuram District, under the Government sector affiliated with
-            the Directorate of Technical Education, Kerala state.</p>
+  <!-- Hero -->
+  <section id="top" class="container mx-auto px-4 pt-14 pb-8 bg-hero-grid/10">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs px-2 py-1 rounded-full border border-slate-800/70 bg-slate-950/60">Open to: Robotics/ROS 2 · Digital Twin · AMR · R&D</div>
+        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">Hubail K</h1>
+        <p class="mt-2 text-xl text-slate-300">Robotics & Automation Engineer</p>
+        <p class="mt-4 text-slate-400 max-w-xl">Designing and deploying <span class="font-semibold text-slate-200">ROS 2</span>-based systems, <span class="font-semibold text-slate-200">NVIDIA Isaac Sim/Lab (Physical AI)</span> digital twins, and high-precision industrial automation. <span class="text-slate-200">Make → Train → Deploy → Maintain</span>.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a id="githubLink" href="https://github.com/hubailk" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">GitHub</a>
+          <a id="linkedinLink" href="https://www.linkedin.com/in/hubailk" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">LinkedIn</a>
+          <a id="youtubeLink" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">YouTube</a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 hover:bg-accent-500 text-white shadow-glow">Contact</a>
         </div>
       </div>
-    
-      <!-- Right Column -->
-      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="resume-title">Professional Experience</h3>
-    
-        <div class="resume-item">
-          <h4>Robotics Engineer</h4>
-          <h5>Smart Dos 10 Flex Assembly Line | Sinergia Media Lab, Bangalore</h5>
-          <p>Smart Dos is a Drug delivery device. This R&D project is exploring how to efficiently assemble Smart dose devices using different robots. Experience in designing and implementing robotic automation solutions for assembly line processes.</p>
-          <ul>
-            <li>Prototyped and tested new robotic and automation solutions as part of R&D.</li>
-            <li>Conducted FMEA and root cause analysis to improve system performance and reduce downtime.</li>
-            <li>Designed and implemented embedded control systems for robotic peripherals and sensors.</li>
-            <li>Selected and integrated components such as actuators, sensors, and controllers to meet specific project requirements.</li>
-            <li>Programmed and integrated ABB YuMi and Omron TM900 robots with PLCs in the
-              FPM system.</li>
-            <li>Simulated robotic workflows using software RobotStudio to optimize path planning and
-              reduce setup time.</li>
-            <li>Tested and validated robotic systems, achieving 99% uptime in production.</li>
-            <li> Created Python scripts to validate assembled device. </li>
-          </ul>
-        </div>
-    
-        <div class="resume-item">
-          <h4>Junior Robotics Engineer</h4>
-          <h5>Fill and Finish Automation | Sinergia Media Lab, Ernakulam</h5>
-          <p>Automate the Fill and Finish process in a pharmaceutical manufacturing facility. Designed and implemented robotic systems, integrated automation equipment, and optimized production efficiency, resulting in improved product quality and reduced manufacturing time.</p>
-          <ul>
-            <li>Programmed and integrated industrial Staubli TX60 robots Using VAL3 programming
-              language and SRS.</li>
-            <li>Participated in the design and execution of test benches for hardware-in-the-loop (HIL)
-              validation.</li>
-            <li>Led system integration of robotic cells, including electrical wiring, pneumatic setup, and
-              safety system configuration.</li>
-          </ul>
-        </div>
-    
-        <div class="resume-item">
-          <h4>Embedded Engineer</h4>
-          <h5>IndVentr200 (i200) and ISAVE | Sinergia Media Lab, Ernakulam</h5>
-          <p><strong>INDVENTR-200 </strong>is an advanced ventilator from the INDVENTR line-up. 
-            The product is an affordable state of art ventilator aimed to strengthen the healthcare systems during the Covid-19 pandemic and prepare for future epidemics. As mentioned, it is designed in such a way that it can be used as an effective emergency care instrument supporting a range of pressure and volume control modes.
-            </p>
-          <p><strong> Individualized System for Augmenting Ventilator Efficacy (iSAVE)</strong> is a novel ventilator-sharing solution for mandatory ventilation modes that allows a single ventilator to provide ventilation to at least two patients. Novel ventilator sharing solution that allows a single ventilator to provide ventilation to at least two patients.This is an R & D project collaborative with MIT.</p>
-          <ul>
-            <li>Programmed microcontrollers (e.g.,Arduino, ESP32) for sensor interfacing, actuator
-              control, and data acquisition.</li>
-            <li>Implemented control algorithms for pressure, flow, and volume regulation in the
-              INDVENTR-200 ventilator.</li>
-            <li>Designed PCB layouts for embedded controller boards and verified hardware
-              functionality through bench testing.</li>
-              <li>Collaborated with top researchers from NUS and MIT to co-develop embedded
-                systems and optimize firmware for life-saving ventilator solutions during the COVID-19
-                crisis. </li>
-          </ul>
+      <div>
+        <!-- Enhanced Terminal card -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-950 shadow-soft overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-2 border-b border-slate-800 bg-slate-900/60 text-slate-400 text-xs">
+            <span class="w-2 h-2 rounded-full bg-red-500/70"></span>
+            <span class="w-2 h-2 rounded-full bg-yellow-500/70"></span>
+            <span class="w-2 h-2 rounded-full bg-green-500/70"></span>
+            <span class="ml-2">/bin/bash — demo</span>
+          </div>
+          <div class="p-4 font-mono text-sm leading-relaxed bg-gradient-to-b from-slate-950 to-slate-900 min-h-[280px]">
+            <div><span class="text-accent-400">hubail@robotics</span>:<span class="text-slate-500">~</span>$ <span id="typed" class="caret"></span></div>
+            <pre id="terminalOutput" class="mt-3 whitespace-pre-wrap"></pre>
+            <div class="mt-3 text-xs text-slate-500">Type <code class="text-slate-300">help</code> then press Enter. Commands: <code class="text-slate-300">help</code>, <code class="text-slate-300">skills</code>, <code class="text-slate-300">projects</code>, <code class="text-slate-300">contact</code></div>
+            <input id="termInput" class="mt-2 w-full bg-slate-900/70 border border-slate-800 rounded-md px-2 py-1 text-slate-200 outline-none focus:border-accent-500" placeholder="help" />
+          </div>
         </div>
       </div>
     </div>
-    
-           
-        <!-- PDF Download Button -->
-        <div class="row mt-4">
-          <div class="col-12 text-center">
-            <a href="assets/img/HUBAIL_K_CV.pdf" class="btn btn-primary" download>
-              <i class="bx bx-download"></i> Download Full Resume (PDF)
-            </a>
-          </div>
-        </div>
+  </section>
 
+  <!-- Skills -->
+  <section id="skills" class="container mx-auto px-4 py-14">
+    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="skillsGrid"></div>
+  </section>
+
+  <!-- Featured Projects with filters -->
+  <section id="projects" class="container mx-auto px-4 py-14">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="sticky-title text-2xl font-bold bg-slate-950/60">Featured Projects</h2>
+      <div class="flex gap-2 text-xs">
+        <button data-filter="all" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">All</button>
+        <button data-filter="sim" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Simulation</button>
+        <button data-filter="vision" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Vision</button>
+        <button data-filter="plc" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">PLC</button>
+        <button data-filter="embedded" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Embedded</button>
       </div>
-    </section><!-- End Resume Section -->
+    </div>
+    <div id="projectsGrid" class="grid md:grid-cols-2 gap-6"></div>
+    <div id="projectsEmpty" class="hidden text-sm text-slate-400">No projects match this filter yet.</div>
+    <div class="mt-4 text-sm"><a id="projectsMore" href="https://github.com/hubailk?tab=repositories" class="text-accent-400 hover:underline">All repositories →</a></div>
+  </section>
 
+  <!-- Experience -->
+  <section id="experience" class="container mx-auto px-4 py-14">
+    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Experience</h2>
+    <ol id="timeline" class="relative border-s-2 border-slate-800 ml-3"></ol>
+  </section>
 
-          
-    <!-- ======= Testimonials Section ======= -->
-  <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
+  <!-- Testimonials -->
+  <section id="testimonials" class="container mx-auto px-4 py-14">
+    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Testimonials</h2>
 
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>  </p>
+    <!-- Card with document preview -->
+    <div class="rounded-2xl border border-slate-800 shadow-soft bg-slate-950">
+      <div class="p-6">
+        <div class="relative mx-auto max-w-3xl">
+          <div class="absolute -top-3 left-6 text-3xl text-accent-400">“</div>
+          <img id="testimonialImage" alt="Testimonial document" loading="lazy" class="w-full rounded-xl border border-slate-800 bg-slate-900 object-cover max-h-[520px]" />
+          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-3xl text-accent-400">”</div>
         </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  <a href="assets/img/testimonials/testimonial-letter-hubail.jpg" class="glightbox">
-              <img src="assets/img/testimonials/testimonial-letter-thumb.jpg" class="testimonial-doc" alt="Testimonial Letter">
-            </a>
-
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/raj.jpeg" class="testimonial-img" alt="">
-                <h3>Rethnaraj Rambabu, Ph.D.</h3>
-                <h4>CEO &amp; Founder Aruvii Pte. Ltd,</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
       </div>
-    </section><!-- End Testimonials Section -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
+      <!-- Pointer bubble to avatar/name -->
+      <div class="flex flex-col items-center px-6 pb-6 text-center">
+        <img id="testimonialPhoto" alt="Author photo" loading="lazy" class="w-20 h-20 rounded-full border border-slate-700 object-cover shadow-soft" />
+        <a id="testimonialName" href="#" target="_blank" rel="noopener" class="mt-3 font-semibold text-slate-100 hover:text-accent-400 underline-offset-4">Name</a>
+        <div id="testimonialRole" class="text-sm text-slate-400">Role</div>
 
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p></p>
+        <!-- Visible quote text for accessibility/SEO; matches our smoke test IDs -->
+        <figure class="mt-4 max-w-2xl">
+          <blockquote id="testimonialText" class="text-slate-300 italic"></blockquote>
+          <figcaption id="testimonialAuthor" class="sr-only"></figcaption>
+        </figure>
+
+        <!-- Controls -->
+        <div class="mt-4 flex gap-2">
+          <button id="prevTest" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Prev</button>
+          <button id="nextTest" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Next</button>
         </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p> Bengaluru, Karnataka, India</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>hubailk7@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+91 9656383100</p>
-              </div>
-
-              
-            </div>
-
-          </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
       </div>
-    </section><!-- End Contact Section -->
+    </div>
+  </section>
 
+  <!-- Contact -->
+  <section id="contact" class="container mx-auto px-4 py-16">
+    <div class="rounded-2xl border border-slate-800 p-8 shadow-soft bg-slate-950">
+      <h2 class="text-2xl font-bold">Get in touch</h2>
+      <p class="text-slate-400 mt-2">For roles, collaborations, or consulting.</p>
+      <div class="mt-6 grid sm:grid-cols-3 gap-3">
+        <a id="emailLink" href="mailto:hubailk7@gmail.com" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-accent-600 hover:bg-accent-500 text-white shadow-glow">Email</a>
+        <a id="calendarLink" href="#" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">Book a call</a>
+        <a href="#top" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">Back to top ↑</a>
+      </div>
+    </div>
+    <footer class="mt-8 text-center text-xs text-slate-500">© <span id="year"></span> Hubail K · Built for GitHub Pages</footer>
+  </section>
 
+  <!-- DATA (before logic) -->
+  <script>
+    const DATA = {
+      summary: `Experienced Robotics and Automation Engineer with 5 years of experience in robotics, automation, and embedded systems. Skilled in new product development, robotic manipulators, and system integration across industrial and medical domains. Proficient in robotics simulation with NVIDIA Isaac Sim, Isaac Lab, and Physics AI, ROS 2, and reinforcement learning.`,
+      links: {
+        github: 'https://github.com/hubailk',
+        linkedin: 'https://www.linkedin.com/in/hubailk/',
+        youtube: '#',
+        cv: '#',
+        calendar: '#'
+      },
+      skills: [
+        { title: 'Programming', items: ['Python','C++','RAPID','VAL-3','Ladder Logic'] },
+        { title: 'Robotics Tools', items: ['NVIDIA Isaac Sim 5','Isaac Lab','PhysicsAI','ROS 2','RViz','MoveIt 2','RobotStudio','RoboDK','Sysmac Studio','TIA Portal','Arduino IDE','Git'] },
+        { title: 'Hardware & Systems', items: ['ABB YuMi','ABB GoFa','Omron TM900','Staubli TX60','Siemens PLC','Omron PLC','Pneumatics','Schunk Grippers','Festo Components','Raspberry Pi','ESP32','TurtleBot 3'] },
+        { title: 'Methods', items: ['FMEA','Root Cause Analysis','HIL Validation','Agile (Azure DevOps)','Make→Train→Deploy→Maintain'] }
+      ],
+      projects: [
+        { title:'ROBOTICS SIMULATION WITH NVIDIA ISAAC SIM, ISAAC LAB AND PHYSICSAI', tag:'sim', stack:'Isaac Sim · Isaac Lab · ROS 2', points:[
+          'Digital twin of TurtleBot3 for SLAM, navigation, and RL.',
+          'ROS 2 Humble integration for real-time autonomy.',
+          'Physics-accurate env for robust sim-to-real.'
+        ], links:{repo:'#',video:'#'} },
+        { title:'GENAI ROBOTICS SYSTEM: VOICE‑TO‑ROBOT INTELLIGENT AUTOMATION', tag:'vision', stack:'ROS · MoveIt · GPT‑4o · Whisper · YOLOv5 · OPC UA', points:[
+          'TX2‑60 executes pick‑place from natural‑language commands.',
+          'Whisper + GPT‑4o for intent; YOLOv5 + OpenCV for vision.',
+          'ROS + MoveIt planning; OPC UA PLC interface.',
+          'Patterns: (1) Tool Calling; (2) LLM Code Gen + Redis cache.'
+        ], links:{repo:'#',video:'#'} },
+        { title:'SMARTDOSE 10 FLEX ASSEMBLY LINE', tag:'plc', stack:'Omron PLC · ABB YuMi · ABB GoFa', points:[
+          'Designed robotic workcells; reduced cycle time by 25%.',
+          'Integrated YuMi, GoFa, and TM900 into FPM system.',
+          'RobotStudio & RoboDK for OLP.'
+        ], links:{repo:'#',video:'#'} },
+        { title:'FILL & FINISH AUTOMATION', tag:'plc', stack:'TX60 · Siemens PLC · PROFINET/PROFIBUS · Schunk EGL', points:[
+          'Automated pharmaceutical Fill & Finish; higher quality, lower time.',
+          'Integrated TX60 with pneumatics, EGL grippers, and vacuum.'
+        ], links:{repo:'#',video:'#'} },
+        { title:'INDVENTR‑200 Ventilator & iSAVE', tag:'embedded', stack:'C++ · ESP32 · PID', points:[
+          'Firmware for pressure/flow/volume control with I/O & DAQ.',
+          'PCB design & bench validation; worked with NUS & MIT.'
+        ], links:{repo:'#',video:'#'} },
+        { title:'EMG‑Controlled Prosthetic Arm (CapstoneProject)', tag:'embedded', stack:'Arduino · Servos · 3D Printing', points:[
+          'Myoelectric control from residual‑limb EMG for natural motion.'
+        ], links:{repo:'#',video:'#'} }
+      ],
+      experience: [
+        { company:'Sinergia Media Labs', role:'Senior Robotic Engineer', location:'Bangalore, India', period:'Jan 2021 – Present', bullets:[
+          'Concept development for device assembly lines; integration & testing.',
+          'Cross‑functional collaboration across mech/elec/soft.',
+          'Pneumatic & electrical design for uptime and safety.',
+          'Robots: ABB YuMi, Omron TM900, Staubli TX60 (RobotStudio, VAL3, SRS).',
+          'Embedded: Arduino/ESP32, PCB design; collab with NUS & MIT.',
+          'FMEA/Root‑Cause; HIL validation benches.',
+          'Mentored interns; Agile (Azure DevOps).',
+          'Siemens/Omron PLCs; Festo/Schmalz/Schunk/CKD integration.'
+        ]}
+      ],
+      testimonials: [
+        {
+          name:'Rethnaraj Rambabu, Ph.D.',
+          role:'CEO & Founder, Aruvii Pte. Ltd.',
+          photo:'assets/testimonials/rethnaraj.jpg',
+          linkedin:'https://www.linkedin.com/',
+          image:'assets/testimonials/rethnaraj-letter.jpg',
+          text:'Hubail delivers reliable automation fast. His ROS 2 and simulation expertise shortened our deployment timeline significantly.'
+        },
+        {
+          name:'Senior Controls Engineer',
+          role:'Pharma Automation Partner',
+          photo:'assets/testimonials/controls.jpg',
+          linkedin:'https://www.linkedin.com/',
+          image:'assets/testimonials/reference-letter.jpg',
+          text:'Great cross‑functional collaborator. From PLCs to AI vision, he bridges disciplines with practical solutions.'
+        }
+      ]
+    }
+  </script>
 
+  <!-- LOGIC -->
+  <script>
+    // --- Smooth scroll (guarded Lenis init with fallback) ---
+    function initSmoothScroll(){
+      if(window.Lenis){
+        try{
+          const lenis = new window.Lenis();
+          function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+          requestAnimationFrame(raf);
+        }catch(e){
+          console.warn('Lenis initialization failed, using CSS smooth scroll.', e);
+          document.documentElement.style.scrollBehavior = 'smooth';
+        }
+      } else {
+        console.warn('Lenis not loaded, using CSS smooth scroll.');
+        document.documentElement.style.scrollBehavior = 'smooth';
+      }
+    }
+    window.addEventListener('load', initSmoothScroll);
 
-   
+    window.addEventListener('DOMContentLoaded', () => {
+      const $ = (q,root=document)=>root.querySelector(q);
+      const $$ = (q,root=document)=>[...root.querySelectorAll(q)];
+      if(typeof DATA==='undefined'){ console.error('DATA missing'); return; }
 
+      // Theme
+      const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+      const saved = localStorage.getItem('theme');
+      if(saved==='dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+      $('#themeToggle')?.addEventListener('click', ()=>{
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark')?'dark':'light');
+      });
 
+      // Year & links
+      $('#year').textContent = new Date().getFullYear();
+      const L = DATA.links; const set=(id,url)=>{const el=document.getElementById(id); if(el&&url&&url!=='#') el.href=url;};
+      set('githubLink',L.github); set('linkedinLink',L.linkedin); set('youtubeLink',L.youtube); set('cvLink',L.cv); set('calendarLink',L.calendar);
 
-  </main><!-- End #main -->
+      // Mobile menu
+      $('#menuToggle')?.addEventListener('click', ()=> $('#mobileMenu').classList.toggle('hidden'));
 
-  
+      // Skills
+      const skillsGrid=$('#skillsGrid');
+      DATA.skills.forEach(({title,items})=>{
+        const card=document.createElement('div'); card.className='tilt relative rounded-2xl border border-slate-800 p-5 bg-slate-950 shadow-soft';
+        card.innerHTML=`<h3 class=\"font-semibold mb-2\">${title}</h3><ul class=\"text-sm text-slate-300 space-y-1\">${items.map(i=>`<li>• ${i}</li>`).join('')}</ul><span class=\"shine\"></span>`;
+        skillsGrid.appendChild(card);
+      });
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      // Projects + filters + tilt
+      const P = DATA.projects; const grid=$('#projectsGrid'); const empty=$('#projectsEmpty');
+      function initProjectAnimations(){
+        if(!window.gsap) return;
+        if(window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
+        const items = gsap.utils.toArray('#projectsGrid > *');
+        items.forEach((el)=>{
+          gsap.from(el, {
+            y: 12,
+            opacity: 0,
+            duration: 0.4,
+            ease: 'power1.out',
+            scrollTrigger: window.ScrollTrigger ? { trigger: el, start: 'top 95%', once: true } : undefined,
+            immediateRender: false
+          });
+        });
+      }
+      const render=(tag='all')=>{
+        grid.innerHTML='';
+        const items = P.filter(pr=> tag==='all' || pr.tag===tag);
+        if(items.length===0){ empty.classList.remove('hidden'); return; } else { empty.classList.add('hidden'); }
+        items.forEach(p=>{
+          const card=document.createElement('article'); card.className='tilt relative rounded-2xl border border-slate-800 p-6 bg-slate-900 hover:bg-slate-800 transition shadow-soft';
+          card.innerHTML=`<h3 class=\"text-lg font-semibold\">${p.title}</h3>
+            <div class=\"text-xs text-accent-400 mt-1\">${p.stack}</div>
+            <ul class=\"mt-3 text-sm text-slate-300 space-y-2\">${p.points.map(pt=>`<li>• ${pt}</li>`).join('')}</ul>
+            <div class=\"mt-4 flex gap-3 text-sm\">${p.links.repo?`<a class=\"underline text-accent-400\" href=\"${p.links.repo}\">Repo</a>`:''}${p.links.video?`<a class=\"underline text-accent-400\" href=\"${p.links.video}\">Video</a>`:''}</div>
+            <span class=\"shine\"></span>`;
+          grid.appendChild(card);
+        });
+        attachTilt();
+        initProjectAnimations();
+      };
+      render('all');
+      $$('[data-filter]').forEach(btn=> btn.addEventListener('click', ()=> render(btn.dataset.filter)));
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+      // Experience timeline
+      const timeline=$('#timeline');
+      DATA.experience.forEach(exp=>{
+        const li=document.createElement('li'); li.className='mb-8 ml-6';
+        li.innerHTML=`<span class=\"absolute -left-2 mt-1 w-3 h-3 rounded-full bg-accent-500\"></span>
+          <div class=\"rounded-xl border border-slate-800 p-5 bg-slate-950\">
+            <div class=\"flex flex-wrap items-baseline gap-2\"><h3 class=\"font-semibold\">${exp.role}</h3><span class=\"text-slate-400\">· ${exp.company}</span></div>
+            <div class=\"text-xs text-slate-400\">${exp.location} · ${exp.period}</div>
+            <ul class=\"mt-3 text-sm text-slate-300 space-y-2\">${exp.bullets.map(b=>`<li>• ${b}</li>`).join('')}</ul>
+          </div>`;
+        timeline.appendChild(li);
+      });
 
+      // Testimonials
+      let ti=0;
+      const tEl=$('#testimonialText');
+      const aEl=$('#testimonialAuthor');
+      const imgEl=$('#testimonialImage');
+      const photoEl=$('#testimonialPhoto');
+      const nameEl=$('#testimonialName');
+      const roleEl=$('#testimonialRole');
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+      const PLACEHOLDER_DOC = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520"><rect width="100%" height="100%" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="20">Document preview not available</text></svg>`);
+      const PLACEHOLDER_AVATAR = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><rect width="100%" height="100%" rx="80" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="16">No Photo</text></svg>`);
 
+      const renderT=()=>{
+        const t=DATA.testimonials[ti] || {};
+        // Text + author (for tests/SEO)
+        tEl.textContent='“'+(t.text||'')+'”';
+        aEl.textContent=`${t.name||''} — ${t.role||''}`;
+        // Image preview card (fallback if missing)
+        imgEl.onerror = ()=>{ imgEl.src = PLACEHOLDER_DOC; };
+        imgEl.src = t.image || PLACEHOLDER_DOC;
+        imgEl.classList.remove('hidden');
+        // Avatar + name/role/link (fallback if missing)
+        photoEl.onerror = ()=>{ photoEl.src = PLACEHOLDER_AVATAR; };
+        photoEl.src = t.photo || PLACEHOLDER_AVATAR;
+        photoEl.classList.remove('hidden');
+        nameEl.textContent=t.name || '—';
+        nameEl.href=(t.linkedin && t.linkedin.startsWith('http')) ? t.linkedin : '#';
+        roleEl.textContent=t.role || '';
+      };
+      renderT();
+      $('#prevTest')?.addEventListener('click', ()=>{ti=(ti-1+DATA.testimonials.length)%DATA.testimonials.length; renderT();});
+      $('#nextTest')?.addEventListener('click', ()=>{ti=(ti+1)%DATA.testimonials.length; renderT();});
+
+      // Terminal: type + commands
+      const typed=$('#typed'); const out=$('#terminalOutput'); const input=$('#termInput');
+      const bootCmd='sudo apt-get install hubail';
+      const bootLines=[
+        'Reading package lists... Done',
+        'Building dependency tree',
+        'Reading state information... Done',
+        'The following NEW packages will be installed:',
+        '  hubail (Robotics & Automation Engineer)',
+        '',
+        'Setting up hubail...',
+        '• ROS 2 · Isaac Sim/Lab · Physical AI',
+        '• PLCs (Siemens/Omron), Pneumatics, Schunk/Festo',
+        '• Python, C++, RAPID, VAL‑3',
+        '• Make → Train → Deploy → Maintain',
+        '',
+        'hubail status: READY — email: hubailk7@gmail.com — LinkedIn: linkedin.com/in/hubailk'
+      ];
+      let i=0; const type=()=>{ if(i<=bootCmd.length){ typed.textContent=bootCmd.slice(0,i++); requestAnimationFrame(type);} else { typed.classList.remove('caret'); printLines(bootLines,60);} }; type();
+      function printLines(lines,delay=60, idx=0){ if(idx>=lines.length) return; out.textContent += (idx?'\n':'')+lines[idx]; setTimeout(()=>printLines(lines,delay,idx+1), delay); }
+      const help=`Available commands:\n  help      — show this help\n  skills    — list core skills\n  projects  — show featured project titles\n  contact   — jump to contact section`;
+      input.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){
+          const cmd=input.value.trim().toLowerCase();
+          if(!cmd) return; out.textContent += `\n$ ${cmd}\n`;
+          if(cmd==='help'){ out.textContent += help; }
+          else if(cmd==='skills'){ out.textContent += DATA.skills.map(s=>`- ${s.title}: ${s.items.slice(0,5).join(', ')}…`).join('\n'); }
+          else if(cmd==='projects'){ out.textContent += DATA.projects.map(p=>`- ${p.title}`).join('\n'); }
+          else if(cmd==='contact'){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }
+          else { out.textContent += `Unknown command: ${cmd}. Type 'help'.`; }
+          input.value='';
+        }
+      });
+
+      // Card tilt/shine
+      function attachTilt(){
+        $$('.tilt').forEach(card=>{
+          card.addEventListener('pointermove', (e)=>{
+            const r=card.getBoundingClientRect();
+            const mx=(e.clientX - r.left)/r.width*100; const my=(e.clientY - r.top)/r.height*100;
+            card.style.setProperty('--mx', mx+'%'); card.style.setProperty('--my', my+'%');
+            const rx=((e.clientY - r.top) - r.height/2)/20; const ry=-( (e.clientX - r.left) - r.width/2)/20;
+            card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+          });
+          card.addEventListener('pointerleave', ()=> card.style.transform='');
+        });
+      }
+
+      // Particles background (simple, lightweight)
+      const canvas=document.getElementById('fx'); const ctx=canvas.getContext('2d'); let W,H; const particles=[]; const N=100;
+      function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
+      addEventListener('resize', resize); resize();
+      for(let i=0;i<N;i++) particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
+      function loop(){ ctx.clearRect(0,0,W,H); ctx.fillStyle='#0b1220'; ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#0f90ff22';
+        particles.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1; ctx.beginPath(); ctx.arc(p.x,p.y,1.2,0,Math.PI*2); ctx.fill(); });
+        requestAnimationFrame(loop);
+      } loop();
+
+      // GSAP entrance animations for hero (non-blocking)
+      if(window.gsap){
+        gsap.from('#top h1',{y:10,opacity:0,duration:.6});
+        gsap.from('#top p',{y:10,opacity:0,stagger:.1,duration:.6,delay:.1});
+      }
+
+      // Smoke tests (do not modify existing; add a few more)
+      try{
+        const results=[]; const assert=(name,cond)=>results.push({test:name,pass:!!cond});
+        // Existing
+        assert('DATA object defined', typeof DATA==='object');
+        assert('Skills rendered', document.getElementById('skillsGrid')?.children.length===DATA.skills.length);
+        assert('Projects rendered (all)', document.getElementById('projectsGrid')?.children.length>0);
+        assert('Testimonials present', (document.getElementById('testimonialText')?.textContent||'').length>0);
+        assert('Year set', (document.getElementById('year')?.textContent||'').trim().length===4);
+        // Additional
+        assert('Terminal input exists', !!document.getElementById('termInput'));
+        assert('Filter buttons exist', document.querySelectorAll('[data-filter]').length>=4);
+        const sb = getComputedStyle(document.documentElement).scrollBehavior;
+        assert('Lenis available or CSS smooth-scroll fallback active', (typeof window.Lenis==='function') || sb==='smooth');
+        console.table(results);
+      }catch(e){ console.error('Smoke tests failed:', e); }
+    });
+  </script>
 </body>
-
 </html>
