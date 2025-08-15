@@ -128,7 +128,7 @@
   <section id="projects" class="container mx-auto px-4 py-14">
     <div class="flex items-center justify-between mb-6">
       <h2 class="sticky-title text-2xl font-bold bg-slate-950/60">Featured Projects</h2>
-      <div class="flex gap-2 text-xs">
+      <div class="flex flex-wrap gap-2 text-xs">
         <button data-filter="all" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">All</button>
         <button data-filter="sim" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Simulation</button>
         <button data-filter="vision" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Vision</button>
@@ -164,7 +164,7 @@
       <!-- Pointer bubble to avatar/name -->
       <div class="flex flex-col items-center px-6 pb-6 text-center">
         <img id="testimonialPhoto" alt="Author photo" loading="lazy" class="w-20 h-20 rounded-full border border-slate-700 object-cover shadow-soft" />
-        <a id="testimonialName" href="#" target="_blank" rel="noopener" class="mt-3 font-semibold text-slate-100 hover:text-accent-400 underline-offset-4">Name</a>
+        <a id="testimonialName" href="#" class="mt-3 font-semibold text-slate-100 hover:text-accent-400 underline-offset-4">Name</a>
         <div id="testimonialRole" class="text-sm text-slate-400">Role</div>
 
         <!-- Visible quote text for accessibility/SEO; matches our smoke test IDs -->
@@ -189,7 +189,7 @@
       <p class="text-slate-400 mt-2">For roles, collaborations, or consulting.</p>
       <div class="mt-6 grid sm:grid-cols-3 gap-3">
         <a id="emailLink" href="mailto:hubailk7@gmail.com" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-accent-600 hover:bg-accent-500 text-white shadow-glow">Email</a>
-        <a id="calendarLink" href="#" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">Book a call</a>
+        <a id="calendarLink" href="tel:+918072337393" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">📞 Call +91 8072337393</a>
         <a href="#top" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">Back to top ↑</a>
       </div>
     </div>
@@ -205,7 +205,7 @@
         linkedin: 'https://www.linkedin.com/in/hubailk/',
         youtube: '#',
         cv: 'assets/cv/Hubail_K.pdf',
-        calendar: '#'
+        calendar: 'tel:+91 9656383100'
       },
       skills: [
         { title: 'Programming', items: ['Python','C++','RAPID','VAL-3','Ladder Logic'] },
@@ -262,8 +262,7 @@
           linkedin:'https://www.linkedin.com/in/rethnaraj/',
           image:'assets/testimonials/rethnaraj-letter.jpg',
           text:'Hubail K demonstrated exceptional robotics automation expertise, strong work ethic, teamwork, and problem-solving skills, excelling in medical device assembly projects. Highly recommended for future robotics engineering roles with research and development focus.'
-        },
-
+        }
       ]
     }
   </script>
@@ -293,33 +292,34 @@
       const $$ = (q,root=document)=>[...root.querySelectorAll(q)];
       if(typeof DATA==='undefined'){ console.error('DATA missing'); return; }
 
-      // Theme
+      // Theme (optional; no button in header yet)
       const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
       const saved = localStorage.getItem('theme');
       if(saved==='dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
-      $('#themeToggle')?.addEventListener('click', ()=>{
+      document.getElementById('themeToggle')?.addEventListener('click', ()=>{
         document.documentElement.classList.toggle('dark');
         localStorage.setItem('theme', document.documentElement.classList.contains('dark')?'dark':'light');
       });
 
       // Year & links
-      $('#year').textContent = new Date().getFullYear();
-      const L = DATA.links; const set=(id,url)=>{const el=document.getElementById(id); if(el&&url&&url!=='#') el.href=url;};
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const L = DATA.links;
+      const set=(id,url)=>{ const el=document.getElementById(id); if(el&&url&&url!=='#') el.href=url; };
       set('githubLink',L.github); set('linkedinLink',L.linkedin); set('youtubeLink',L.youtube); set('cvLink',L.cv); set('calendarLink',L.calendar);
 
       // Mobile menu
-      $('#menuToggle')?.addEventListener('click', ()=> $('#mobileMenu').classList.toggle('hidden'));
+      document.getElementById('menuToggle')?.addEventListener('click', ()=> document.getElementById('mobileMenu').classList.toggle('hidden'));
 
       // Skills
-      const skillsGrid=$('#skillsGrid');
+      const skillsGrid=document.getElementById('skillsGrid');
       DATA.skills.forEach(({title,items})=>{
         const card=document.createElement('div'); card.className='tilt relative rounded-2xl border border-slate-800 p-5 bg-slate-950 shadow-soft';
-        card.innerHTML=`<h3 class=\"font-semibold mb-2\">${title}</h3><ul class=\"text-sm text-slate-300 space-y-1\">${items.map(i=>`<li>• ${i}</li>`).join('')}</ul><span class=\"shine\"></span>`;
+        card.innerHTML=`<h3 class="font-semibold mb-2">${title}</h3><ul class="text-sm text-slate-300 space-y-1">${items.map(i=>`<li>• ${i}</li>`).join('')}</ul><span class="shine"></span>`;
         skillsGrid.appendChild(card);
       });
 
       // Projects + filters + tilt
-      const P = DATA.projects; const grid=$('#projectsGrid'); const empty=$('#projectsEmpty');
+      const P = DATA.projects; const grid=document.getElementById('projectsGrid'); const empty=document.getElementById('projectsEmpty');
       function initProjectAnimations(){
         if(!window.gsap) return;
         if(window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
@@ -341,40 +341,40 @@
         if(items.length===0){ empty.classList.remove('hidden'); return; } else { empty.classList.add('hidden'); }
         items.forEach(p=>{
           const card=document.createElement('article'); card.className='tilt relative rounded-2xl border border-slate-800 p-6 bg-slate-900 hover:bg-slate-800 transition shadow-soft';
-          card.innerHTML=`<h3 class=\"text-lg font-semibold\">${p.title}</h3>
-            <div class=\"text-xs text-accent-400 mt-1\">${p.stack}</div>
-            <ul class=\"mt-3 text-sm text-slate-300 space-y-2\">${p.points.map(pt=>`<li>• ${pt}</li>`).join('')}</ul>
-            <div class=\"mt-4 flex gap-3 text-sm\">${p.links.repo?`<a class=\"underline text-accent-400\" href=\"${p.links.repo}\">Repo</a>`:''}${p.links.video?`<a class=\"underline text-accent-400\" href=\"${p.links.video}\">Video</a>`:''}</div>
-            <span class=\"shine\"></span>`;
+          card.innerHTML=`<h3 class="text-lg font-semibold">${p.title}</h3>
+            <div class="text-xs text-accent-400 mt-1">${p.stack}</div>
+            <ul class="mt-3 text-sm text-slate-300 space-y-2">${p.points.map(pt=>`<li>• ${pt}</li>`).join('')}</ul>
+            <div class="mt-4 flex gap-3 text-sm">${p.links.repo?`<a class="underline text-accent-400" href="${p.links.repo}">Repo</a>`:''}${p.links.video?`<a class="underline text-accent-400" href="${p.links.video}">Video</a>`:''}</div>
+            <span class="shine"></span>`;
           grid.appendChild(card);
         });
         attachTilt();
         initProjectAnimations();
       };
       render('all');
-      $$('[data-filter]').forEach(btn=> btn.addEventListener('click', ()=> render(btn.dataset.filter)));
+      document.querySelectorAll('[data-filter]').forEach(btn=> btn.addEventListener('click', ()=> render(btn.dataset.filter)));
 
       // Experience timeline
-      const timeline=$('#timeline');
+      const timeline=document.getElementById('timeline');
       DATA.experience.forEach(exp=>{
         const li=document.createElement('li'); li.className='mb-8 ml-6';
-        li.innerHTML=`<span class=\"absolute -left-2 mt-1 w-3 h-3 rounded-full bg-accent-500\"></span>
-          <div class=\"rounded-xl border border-slate-800 p-5 bg-slate-950\">
-            <div class=\"flex flex-wrap items-baseline gap-2\"><h3 class=\"font-semibold\">${exp.role}</h3><span class=\"text-slate-400\">· ${exp.company}</span></div>
-            <div class=\"text-xs text-slate-400\">${exp.location} · ${exp.period}</div>
-            <ul class=\"mt-3 text-sm text-slate-300 space-y-2\">${exp.bullets.map(b=>`<li>• ${b}</li>`).join('')}</ul>
+        li.innerHTML=`<span class="absolute -left-2 mt-1 w-3 h-3 rounded-full bg-accent-500"></span>
+          <div class="rounded-xl border border-slate-800 p-5 bg-slate-950">
+            <div class="flex flex-wrap items-baseline gap-2"><h3 class="font-semibold">${exp.role}</h3><span class="text-slate-400">· ${exp.company}</span></div>
+            <div class="text-xs text-slate-400">${exp.location} · ${exp.period}</div>
+            <ul class="mt-3 text-sm text-slate-300 space-y-2">${exp.bullets.map(b=>`<li>• ${b}</li>`).join('')}</ul>
           </div>`;
         timeline.appendChild(li);
       });
 
       // Testimonials
       let ti=0;
-      const tEl=$('#testimonialText');
-      const aEl=$('#testimonialAuthor');
-      const imgEl=$('#testimonialImage');
-      const photoEl=$('#testimonialPhoto');
-      const nameEl=$('#testimonialName');
-      const roleEl=$('#testimonialRole');
+      const tEl=document.getElementById('testimonialText');
+      const aEl=document.getElementById('testimonialAuthor');
+      const imgEl=document.getElementById('testimonialImage');
+      const photoEl=document.getElementById('testimonialPhoto');
+      const nameEl=document.getElementById('testimonialName');
+      const roleEl=document.getElementById('testimonialRole');
 
       const PLACEHOLDER_DOC = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520"><rect width="100%" height="100%" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="20">Document preview not available</text></svg>`);
       const PLACEHOLDER_AVATAR = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><rect width="100%" height="100%" rx="80" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="16">No Photo</text></svg>`);
@@ -397,11 +397,11 @@
         roleEl.textContent=t.role || '';
       };
       renderT();
-      $('#prevTest')?.addEventListener('click', ()=>{ti=(ti-1+DATA.testimonials.length)%DATA.testimonials.length; renderT();});
-      $('#nextTest')?.addEventListener('click', ()=>{ti=(ti+1)%DATA.testimonials.length; renderT();});
+      document.getElementById('prevTest')?.addEventListener('click', ()=>{ti=(ti-1+DATA.testimonials.length)%DATA.testimonials.length; renderT();});
+      document.getElementById('nextTest')?.addEventListener('click', ()=>{ti=(ti+1)%DATA.testimonials.length; renderT();});
 
       // Terminal: type + commands
-      const typed=$('#typed'); const out=$('#terminalOutput'); const input=$('#termInput');
+      const typed=document.getElementById('typed'); const out=document.getElementById('terminalOutput'); const input=document.getElementById('termInput');
       const bootCmd='sudo apt-get install hubail';
       const bootLines=[
         'Reading package lists... Done',
@@ -434,9 +434,11 @@
         }
       });
 
-      // Card tilt/shine
+      // Card tilt/shine (fixed syntax)
       function attachTilt(){
-        $$('.tilt').forEach(card=>{
+        // Disable tilt on touch devices to avoid jank/misalignment
+        if (window.matchMedia && matchMedia('(pointer:coarse)').matches) return;
+        document.querySelectorAll('.tilt').forEach(card=>{
           card.addEventListener('pointermove', (e)=>{
             const r=card.getBoundingClientRect();
             const mx=(e.clientX - r.left)/r.width*100; const my=(e.clientY - r.top)/r.height*100;
@@ -465,7 +467,7 @@
         gsap.from('#top p',{y:10,opacity:0,stagger:.1,duration:.6,delay:.1});
       }
 
-      // Smoke tests (do not modify existing; add a few more)
+      // Smoke tests (kept) + added a few more
       try{
         const results=[]; const assert=(name,cond)=>results.push({test:name,pass:!!cond});
         // Existing
@@ -479,11 +481,11 @@
         assert('Filter buttons exist', document.querySelectorAll('[data-filter]').length>=4);
         const sb = getComputedStyle(document.documentElement).scrollBehavior;
         assert('Lenis available or CSS smooth-scroll fallback active', (typeof window.Lenis==='function') || sb==='smooth');
+        assert('Call link uses tel:', document.getElementById('calendarLink')?.href.startsWith('tel:'));
+        assert('CV link set to PDF', /\.pdf(\?|#|$)/i.test(document.getElementById('cvLink')?.getAttribute('href')||''));
         console.table(results);
       }catch(e){ console.error('Smoke tests failed:', e); }
     });
   </script>
 </body>
 </html>
-
-
