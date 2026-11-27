@@ -1,492 +1,632 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hubail K — Robotics & Automation Engineer</title>
-  <meta name="description" content="Robotics & Automation Engineer — ROS 2, NVIDIA Isaac Sim/Lab (Physical AI), Digital Twins, AMR. Make → Train → Deploy → Maintain." />
-  <meta name="theme-color" content="#0b1220" />
-  <meta property="og:title" content="Hubail K — Robotics Engineer" />
-  <meta property="og:description" content="Robotics, ROS 2, Isaac Sim/Lab, Physical AI, Industrial Automation." />
-  <meta property="og:type" content="website" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hubail K | Physical AI & Robotics Solutions Architect</title>
+  <meta name="description" content="Hubail K - Physical AI & Robotics Solutions Architect specializing in NVIDIA Isaac-GR00T, VLA, OpenUSD Digital Twins, Isaac Sim/Lab, ROS 2, and Industrial Automation.">
 
-  <!-- Fonts -->
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Tailwind (Play CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode:'class',
-      theme:{
-        extend:{
-          fontFamily:{ sans:['Inter','ui-sans-serif','system-ui'], mono:['JetBrains Mono','ui-monospace','SFMono-Regular'] },
-          colors:{ accent:{50:'#e8f5ff',100:'#cfe9ff',200:'#9dd3ff',300:'#6bbcff',400:'#39a6ff',500:'#0f90ff',600:'#0076e6',700:'#005cb4',800:'#004688',900:'#003a72'}},
-          boxShadow:{soft:'0 10px 30px rgba(2,12,27,0.15)', glow:'0 0 0 1px #0f90ff40, 0 10px 30px #0f90ff1a'},
-          backgroundImage:{
-            'hero-grid':'radial-gradient(circle at 20% 10%, #0f90ff20 0, transparent 35%), radial-gradient(circle at 80% 20%, #22d3ee15 0, transparent 35%), radial-gradient(circle at 60% 80%, #22c55e15 0, transparent 35%)'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Animation libs (vanilla, GitHub Pages-friendly) -->
-  <script src="https://unpkg.com/lenis@1.1.13/bundled/lenis.min.js"></script>
-  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <style>
-    html{scroll-behavior:smooth}
-    .container{max-width:1120px}
-    .caret::after{content:"_";animation:blink 1s step-end infinite}
-    @keyframes blink{50%{opacity:0}}
-    /* Card tilt */
-    .tilt{transform-style:preserve-3d;will-change:transform;transition:transform .15s ease}
-    .tilt:hover{transform:translateY(-2px)}
-    .tilt > .shine{position:absolute;inset:0;background:radial-gradient(180px 80px at var(--mx,50%) var(--my,50%), #ffffff22, transparent 60%);pointer-events:none;border-radius:inherit}
-    /* Sticky section headings */
-    section h2.sticky-title{position:sticky;top:64px;backdrop-filter:blur(6px)}
-    /* Particles canvas */
-    #fx{position:fixed;inset:0;z-index:-1}
+    :root {
+      --bg-main: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --primary: #0047AB;      /* Deep Cobalt */
+      --primary-dark: #003380;
+      --text-main: #18181B;
+      --text-muted: #52525B;
+      --border-light: #E4E4E7;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .navbar-brand { font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); }
+    .nav-link { font-weight: 500; color: var(--text-muted); font-size: 0.95rem; }
+    .nav-link:hover, .nav-link.active { color: var(--primary); }
+
+    /* Hero */
+    .hero-section {
+      padding: 110px 0 80px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(0, 71, 171, 0.08);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .hero-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.15; }
+    .profile-avatar {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Buttons */
+    .btn-primary-custom {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 22px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-primary-custom:hover { background-color: var(--primary-dark); color: #FFFFFF; transform: translateY(-1px); }
+    .btn-outline-custom {
+      border: 1.5px solid var(--border-light);
+      background: #FFFFFF;
+      color: var(--text-main);
+      padding: 10px 22px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-outline-custom:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Sections */
+    section { padding: 72px 0; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .section-title { font-weight: 800; font-size: 2rem; letter-spacing: -0.5px; margin-bottom: 12px; }
+
+    /* Cards */
+    .clean-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 24px;
+      height: 100%;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .clean-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05); }
+
+    /* Skill Pills */
+    .skill-pill {
+      display: inline-block;
+      padding: 5px 12px;
+      margin: 4px 4px 4px 0;
+      border-radius: 6px;
+      background: #F4F4F5;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #E4E4E7;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      border-left: 2px solid var(--primary);
+      padding-left: 24px;
+      padding-bottom: 32px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      position: absolute;
+      left: -7px;
+      top: 6px;
+    }
+
+    /* Video & Portfolio Cards */
+    .video-card, .portfolio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      overflow: hidden;
+      height: 100%;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .video-card:hover, .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+    }
+    .portfolio-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .filter-btn {
+      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .tag-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(0, 71, 171, 0.08);
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-light);
+      background: #FFFFFF;
+      padding: 32px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 selection:bg-accent-500/30">
-  <canvas id="fx"></canvas>
+<body>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur bg-slate-950/65">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="text-lg font-extrabold tracking-tight">Hubail K<span class="text-accent-500">.</span></a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#projects" class="hover:text-accent-400">Projects</a>
-        <a href="#skills" class="hover:text-accent-400">Skills</a>
-        <a href="#experience" class="hover:text-accent-400">Experience</a>
-        <a href="#testimonials" class="hover:text-accent-400">Testimonials</a>
-        <a href="#contact" class="hover:text-accent-400">Contact</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <a id="cvLink" href="#" class="px-3 py-1.5 rounded-xl bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold shadow-soft">Download CV</a>
-        <button id="menuToggle" class="md:hidden p-2 rounded-lg border border-slate-800 hover:bg-slate-900" aria-label="Open menu">☰</button>
-      </div>
+<!-- ==================== NAVBAR ==================== -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">HUBAIL<span style="color: var(--primary);">.</span>K</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#videos">Video Demos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-800 bg-slate-950">
-      <nav class="container mx-auto px-4 py-3 grid gap-2 text-sm">
-        <a class="py-2 border-b border-slate-800" href="#projects">Projects</a>
-        <a class="py-2 border-b border-slate-800" href="#skills">Skills</a>
-        <a class="py-2 border-b border-slate-800" href="#experience">Experience</a>
-        <a class="py-2 border-b border-slate-800" href="#testimonials">Testimonials</a>
-        <a class="py-2" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section id="top" class="container mx-auto px-4 pt-14 pb-8 bg-hero-grid/10">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 text-xs px-2 py-1 rounded-full border border-slate-800/70 bg-slate-950/60">Open to: Robotics/ROS 2 · Digital Twin · Manipulator · R&D</div>
-        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">Hubail K</h1>
-        <p class="mt-2 text-xl text-slate-300">Robotics & Automation Engineer</p>
-        <p class="mt-4 text-slate-400 max-w-xl">Designing and deploying <span class="font-semibold text-slate-200">ROS 2</span>-based systems, <span class="font-semibold text-slate-200">NVIDIA Isaac Sim/Lab (Physical AI)</span> digital twins, and high-precision industrial automation. <span class="text-slate-200">Make → Train → Deploy → Maintain</span>.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a id="githubLink" href="https://github.com/hubailk" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">GitHub</a>
-          <a id="linkedinLink" href="https://www.linkedin.com/in/hubailk" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">LinkedIn</a>
-          <a id="youtubeLink" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">YouTube</a>
-          <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 hover:bg-accent-500 text-white shadow-glow">Contact</a>
+<!-- ==================== HERO ==================== -->
+<header id="home" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="hero-badge">Physical AI • Digital Twins • Industrial Robotics</span>
+        <h1 class="hero-title mb-3">Building Embodied AI & Autonomous Robotic Systems.</h1>
+        <p class="lead text-secondary mb-4">
+          I'm <strong>Hubail K</strong>, a Physical AI & Robotics Solutions Architect leading an 11-member engineering practice. I bridge <strong>NVIDIA Isaac-GR00T</strong>, <strong>Vision-Language-Action (VLA)</strong> models, <strong>OpenUSD Digital Twins</strong>, and industrial automation from simulation to factory floor.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#videos" class="btn btn-primary-custom"><i class="bi bi-play-circle me-2"></i>Watch Demos</a>
+          <a href="assets/cv/Hubail_K.pdf" target="_blank" class="btn btn-outline-custom"><i class="bi bi-file-earmark-pdf me-2"></i>Download CV</a>
+          <a href="https://github.com/hubailk" target="_blank" class="btn btn-outline-custom"><i class="bi bi-github"></i></a>
+          <a href="https://linkedin.com/in/hubailk" target="_blank" class="btn btn-outline-custom"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
-      <div>
-        <!-- Enhanced Terminal card -->
-        <div class="rounded-2xl border border-slate-800 bg-slate-950 shadow-soft overflow-hidden">
-          <div class="flex items-center gap-2 px-4 py-2 border-b border-slate-800 bg-slate-900/60 text-slate-400 text-xs">
-            <span class="w-2 h-2 rounded-full bg-red-500/70"></span>
-            <span class="w-2 h-2 rounded-full bg-yellow-500/70"></span>
-            <span class="w-2 h-2 rounded-full bg-green-500/70"></span>
-            <span class="ml-2">/bin/bash — demo</span>
+      <div class="col-lg-5 text-center">
+        <img src="assets/img/profile-img.jpg" alt="Hubail K" class="profile-avatar">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== ABOUT & HIGHLIGHTS ==================== -->
+<section id="about">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="clean-card">
+          <div class="fs-2 fw-bold" style="color: var(--primary);">5+ Years</div>
+          <div class="fw-semibold mt-1">Robotics & Automation R&D</div>
+          <p class="text-secondary small mt-2 mb-0">Full-stack deployment across pharmaceutical assembly, industrial manipulators, PLCs, and embodied AI.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="clean-card">
+          <div class="fs-2 fw-bold" style="color: var(--primary);">VLA & GR00T</div>
+          <div class="fw-semibold mt-1">Robot Learning & Sim-to-Real</div>
+          <p class="text-secondary small mt-2 mb-0">Architecting Isaac-GR00T, LeRobot, and Isaac Lab pipelines for dexterous manipulation and adaptive factories.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="clean-card">
+          <div class="fs-2 fw-bold" style="color: var(--primary);">OpenUSD</div>
+          <div class="fw-semibold mt-1">Factory Digital Twins</div>
+          <p class="text-secondary small mt-2 mb-0">Building physics-accurate NVIDIA Isaac Sim digital twins with ROS 2, AMRs, and AWS IoT Greengrass telemetry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SKILLS ==================== -->
+<section id="skills" style="background: #FFFFFF; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <div class="container">
+    <span class="section-label">Tech Stack</span>
+    <h2 class="section-title mb-4">Core Capabilities</h2>
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="clean-card">
+          <h5 class="fw-bold mb-3"><i class="bi bi-cpu text-primary me-2"></i>Physical AI & Robot Learning</h5>
+          <div>
+            <span class="skill-pill">NVIDIA Isaac-GR00T</span>
+            <span class="skill-pill">VLA (OpenVLA / SmolVLA)</span>
+            <span class="skill-pill">Hugging Face LeRobot</span>
+            <span class="skill-pill">Isaac Lab (RL / IL)</span>
+            <span class="skill-pill">Sim-to-Real Transfer</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">Agentic Factory AI</span>
           </div>
-          <div class="p-4 font-mono text-sm leading-relaxed bg-gradient-to-b from-slate-950 to-slate-900 min-h-[280px]">
-            <div><span class="text-accent-400">hubail@robotics</span>:<span class="text-slate-500">~</span>$ <span id="typed" class="caret"></span></div>
-            <pre id="terminalOutput" class="mt-3 whitespace-pre-wrap"></pre>
-            <div class="mt-3 text-xs text-slate-500">Type <code class="text-slate-300">help</code> then press Enter. Commands: <code class="text-slate-300">help</code>, <code class="text-slate-300">skills</code>, <code class="text-slate-300">projects</code>, <code class="text-slate-300">contact</code></div>
-            <input id="termInput" class="mt-2 w-full bg-slate-900/70 border border-slate-800 rounded-md px-2 py-1 text-slate-200 outline-none focus:border-accent-500" placeholder="help" />
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="clean-card">
+          <h5 class="fw-bold mb-3"><i class="bi bi-boxes text-primary me-2"></i>Digital Twins & Simulation</h5>
+          <div>
+            <span class="skill-pill">NVIDIA Isaac Sim 5/6</span>
+            <span class="skill-pill">OpenUSD</span>
+            <span class="skill-pill">Scan-to-USD</span>
+            <span class="skill-pill">ROS 2 (Humble / Jazzy)</span>
+            <span class="skill-pill">MoveIt 2 & cuRobo</span>
+            <span class="skill-pill">Nav2 & SLAM</span>
+            <span class="skill-pill">Gazebo Harmonic</span>
+            <span class="skill-pill">RobotStudio & RoboDK</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="clean-card">
+          <h5 class="fw-bold mb-3"><i class="bi bi-robot text-primary me-2"></i>Industrial Hardware & Controls</h5>
+          <div>
+            <span class="skill-pill">ABB YuMi / GoFa</span>
+            <span class="skill-pill">Universal Robots (UR5/10)</span>
+            <span class="skill-pill">Doosan / Omron TM</span>
+            <span class="skill-pill">Stäubli TX60</span>
+            <span class="skill-pill">Dobot CR5 & Addverb AMRs</span>
+            <span class="skill-pill">Siemens & Omron PLCs</span>
+            <span class="skill-pill">OPC UA / PROFINET</span>
+            <span class="skill-pill">AWS IoT Greengrass</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills -->
-  <section id="skills" class="container mx-auto px-4 py-14">
-    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Skills</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="skillsGrid"></div>
-  </section>
+<!-- ==================== EXPERIENCE ==================== -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">Career</span>
+    <h2 class="section-title mb-4">Professional Experience</h2>
+    <div class="clean-card">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="d-flex flex-wrap justify-content-between align-items-baseline">
+          <h5 class="fw-bold mb-1">Senior Software Engineer (Robotics R&D) & Physical AI Solutions Architect</h5>
+          <span class="font-mono small text-primary fw-semibold">Mar 2026 – Present</span>
+        </div>
+        <div class="text-secondary fw-medium mb-2">Tech Mahindra • Bengaluru, India</div>
+        <ul class="text-secondary mb-0">
+          <li>Lead an 11-member Physical AI engineering practice spanning Robot Learning (VLA, RL, Imitation Learning), OpenUSD Digital Twins, 3D Reconstruction, AMR navigation, and Agentic Factory Intelligence.</li>
+          <li>Architect end-to-end Vision-Language-Action (VLA) training and dataset pipelines using <strong>NVIDIA Isaac-GR00T</strong> and <strong>Hugging Face LeRobot</strong> for dexterous manipulation and automated assembly.</li>
+          <li>Designed the AWS & NVIDIA Physical AI architecture for the Manufacturing Experience Center (MXC), integrating Dobot CR5 arms, Addverb AMRs, OpenUSD digital twins, and AWS IoT Greengrass telemetry.</li>
+          <li>Engineered enterprise Digital Twin and Physical AI architectures for global semiconductor and automotive manufacturing lines.</li>
+        </ul>
+      </div>
 
-  <!-- Featured Projects with filters -->
-  <section id="projects" class="container mx-auto px-4 py-14">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="sticky-title text-2xl font-bold bg-slate-950/60">Featured Projects</h2>
-      <div class="flex flex-wrap gap-2 text-xs">
-        <button data-filter="all" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">All</button>
-        <button data-filter="sim" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Simulation</button>
-        <button data-filter="vision" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Vision</button>
-        <button data-filter="plc" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">PLC</button>
-        <button data-filter="embedded" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Embedded</button>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="d-flex flex-wrap justify-content-between align-items-baseline">
+          <h5 class="fw-bold mb-1">Senior Robotics Engineer</h5>
+          <span class="font-mono small text-primary fw-semibold">Jan 2021 – Oct 2025</span>
+        </div>
+        <div class="text-secondary fw-medium mb-2">Sinergia Media Labs • Bengaluru, India</div>
+        <ul class="text-secondary mb-0">
+          <li>Led system integration and commissioning for pharmaceutical assembly lines (SmartDose 10 Flex), optimizing robotic workcells and reducing cycle times by <strong>25%</strong>.</li>
+          <li>Programmed and integrated ABB YuMi, ABB GoFa, Omron TM5-900, and Stäubli TX60 robots alongside Siemens/Omron PLCs (PROFINET/PROFIBUS) and Festo/Schunk pneumatic systems.</li>
+          <li>Executed FMEA, root cause analysis, and Hardware-in-the-Loop (HIL) validation; collaborated with NUS and MIT researchers on embedded ventilator firmware and PCB design (IndVentr-200).</li>
+        </ul>
       </div>
     </div>
-    <div id="projectsGrid" class="grid md:grid-cols-2 gap-6"></div>
-    <div id="projectsEmpty" class="hidden text-sm text-slate-400">No projects match this filter yet.</div>
-    <div class="mt-4 text-sm"><a id="projectsMore" href="https://github.com/hubailk?tab=repositories" class="text-accent-400 hover:underline">All repositories →</a></div>
-  </section>
+  </div>
+</section>
 
-  <!-- Experience -->
-  <section id="experience" class="container mx-auto px-4 py-14">
-    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Experience</h2>
-    <ol id="timeline" class="relative border-s-2 border-slate-800 ml-3"></ol>
-  </section>
+<!-- ==================== VIDEO DEMOS ==================== -->
+<section id="videos" style="background: #FFFFFF; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+      <div>
+        <span class="section-label">Live Demonstrations</span>
+        <h2 class="section-title mb-0">Video Demos</h2>
+      </div>
+      <p class="text-secondary small mb-0">Replace <code>YOUR_YOUTUBE_ID</code> in the HTML with your YouTube video IDs to go live.</p>
+    </div>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="container mx-auto px-4 py-14">
-    <h2 class="sticky-title text-2xl font-bold mb-6 bg-slate-950/60">Testimonials</h2>
-
-    <!-- Card with document preview -->
-    <div class="rounded-2xl border border-slate-800 shadow-soft bg-slate-950">
-      <div class="p-6">
-        <div class="relative mx-auto max-w-3xl">
-          <div class="absolute -top-3 left-6 text-3xl text-accent-400">“</div>
-          <img id="testimonialImage" alt="Testimonial document" loading="lazy" class="w-full rounded-xl border border-slate-800 bg-slate-900 object-cover max-h-[520px]" />
-          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-3xl text-accent-400">”</div>
+    <div class="row g-4">
+      <!-- Video 1 -->
+      <div class="col-lg-6">
+        <div class="video-card">
+          <div class="ratio ratio-16x9 bg-dark">
+            <!-- Replace YOUR_YOUTUBE_ID_1 with your actual YouTube Video ID -->
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_1" title="VLA & GR00T Manipulation Demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="p-4">
+            <div class="mb-2">
+              <span class="tag-chip">NVIDIA GR00T</span>
+              <span class="tag-chip">LeRobot</span>
+              <span class="tag-chip">VLA</span>
+            </div>
+            <h5 class="fw-bold mb-1">VLA Manipulation with Isaac-GR00T & LeRobot</h5>
+            <p class="text-secondary small mb-0">End-to-end teleoperation, dataset conversion, and closed-loop Vision-Language-Action policy execution on robotic arms.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Pointer bubble to avatar/name -->
-      <div class="flex flex-col items-center px-6 pb-6 text-center">
-        <img id="testimonialPhoto" alt="Author photo" loading="lazy" class="w-20 h-20 rounded-full border border-slate-700 object-cover shadow-soft" />
-        <a id="testimonialName" href="#" class="mt-3 font-semibold text-slate-100 hover:text-accent-400 underline-offset-4">Name</a>
-        <div id="testimonialRole" class="text-sm text-slate-400">Role</div>
+      <!-- Video 2 -->
+      <div class="col-lg-6">
+        <div class="video-card">
+          <div class="ratio ratio-16x9 bg-dark">
+            <!-- Replace YOUR_YOUTUBE_ID_2 with your actual YouTube Video ID -->
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_2" title="Factory Digital Twin in NVIDIA Isaac Sim" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="p-4">
+            <div class="mb-2">
+              <span class="tag-chip">Isaac Sim</span>
+              <span class="tag-chip">OpenUSD</span>
+              <span class="tag-chip">ROS 2</span>
+            </div>
+            <h5 class="fw-bold mb-1">OpenUSD Factory Digital Twin & AMR Navigation</h5>
+            <p class="text-secondary small mb-0">Physics-accurate industrial workcell and AMR digital twin running real-time ROS 2 telemetry and sim-to-real validation.</p>
+          </div>
+        </div>
+      </div>
 
-        <!-- Visible quote text for accessibility/SEO; matches our smoke test IDs -->
-        <figure class="mt-4 max-w-2xl">
-          <blockquote id="testimonialText" class="text-slate-300 italic"></blockquote>
-          <figcaption id="testimonialAuthor" class="sr-only"></figcaption>
-        </figure>
+      <!-- Video 3 -->
+      <div class="col-lg-6">
+        <div class="video-card">
+          <div class="ratio ratio-16x9 bg-dark">
+            <!-- Replace YOUR_YOUTUBE_ID_3 with your actual YouTube Video ID -->
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_3" title="GenAI Voice-to-Robot Automation" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="p-4">
+            <div class="mb-2">
+              <span class="tag-chip">GPT-4o</span>
+              <span class="tag-chip">MoveIt</span>
+              <span class="tag-chip">OPC UA</span>
+            </div>
+            <h5 class="fw-bold mb-1">GenAI Voice-to-Robot Pick & Place</h5>
+            <p class="text-secondary small mb-0">Natural language voice control of a Stäubli TX2-60 using Whisper, GPT-4o, YOLOv5, and OPC UA PLC gripper actuation.</p>
+          </div>
+        </div>
+      </div>
 
-        <!-- Controls -->
-        <div class="mt-4 flex gap-2">
-          <button id="prevTest" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Prev</button>
-          <button id="nextTest" class="px-3 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-900">Next</button>
+      <!-- Video 4 -->
+      <div class="col-lg-6">
+        <div class="video-card">
+          <div class="ratio ratio-16x9 bg-dark">
+            <!-- Replace YOUR_YOUTUBE_ID_4 with your actual YouTube Video ID -->
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_4" title="Industrial Robotic Workcell Automation" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="p-4">
+            <div class="mb-2">
+              <span class="tag-chip">ABB YuMi / GoFa</span>
+              <span class="tag-chip">PLC</span>
+              <span class="tag-chip">RobotStudio</span>
+            </div>
+            <h5 class="fw-bold mb-1">High-Speed Pharmaceutical Assembly Workcell</h5>
+            <p class="text-secondary small mb-0">Multi-robot industrial automation line achieving a 25% cycle time reduction through offline path optimization.</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact" class="container mx-auto px-4 py-16">
-    <div class="rounded-2xl border border-slate-800 p-8 shadow-soft bg-slate-950">
-      <h2 class="text-2xl font-bold">Get in touch</h2>
-      <p class="text-slate-400 mt-2">For roles, collaborations, or consulting.</p>
-      <div class="mt-6 grid sm:grid-cols-3 gap-3">
-        <a id="emailLink" href="mailto:hubailk7@gmail.com" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-accent-600 hover:bg-accent-500 text-white shadow-glow">Email</a>
-        <a id="calendarLink" href="tel:+91 9656383100" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">📞 Call</a>
-        <a href="#top" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-slate-800 hover:bg-slate-900">Back to top ↑</a>
+<!-- ==================== PORTFOLIO GRID ==================== -->
+<section id="portfolio">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="section-label">Selected Work</span>
+      <h2 class="section-title">Engineering Portfolio</h2>
+      <div class="mt-3" id="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="physical-ai">Physical AI & VLA</button>
+        <button class="filter-btn" data-filter="digital-twin">Digital Twins</button>
+        <button class="filter-btn" data-filter="industrial">Industrial Robotics</button>
       </div>
     </div>
-    <footer class="mt-8 text-center text-xs text-slate-500">© <span id="year"></span> Hubail K · Built for GitHub Pages</footer>
-  </section>
 
-  <!-- DATA (before logic) -->
-  <script>
-    const DATA = {
-      summary: `Experienced Robotics and Automation Engineer with 5 years of experience in robotics, automation, and embedded systems. Skilled in new product development, robotic manipulators, and system integration across industrial and medical domains. Proficient in robotics simulation with NVIDIA Isaac Sim, Isaac Lab, and Physics AI, ROS 2, and reinforcement learning.`,
-      links: {
-        github: 'https://github.com/hubailk',
-        linkedin: 'https://www.linkedin.com/in/hubailk/',
-        youtube: '#',
-        cv: 'assets/cv/Hubail_K.pdf',
-        calendar: 'tel:+91 9656383100'
-      },
-      skills: [
-        { title: 'Programming', items: ['Python','C++','RAPID','VAL-3','Ladder Logic'] },
-        { title: 'Robotics Tools', items: ['NVIDIA Isaac Sim 5','Isaac Lab','PhysicsAI','ROS 2','RViz','MoveIt 2','RobotStudio','RoboDK','Sysmac Studio','TIA Portal','Arduino IDE','Git'] },
-        { title: 'Hardware & Systems', items: ['ABB YuMi','ABB GoFa','Omron TM900','Staubli TX60','Siemens PLC','Omron PLC','Pneumatics','Schunk Grippers','Festo Components','Raspberry Pi','ESP32','TurtleBot 3'] },
-        { title: 'Methods', items: ['FMEA','Root Cause Analysis','HIL Validation','Agile (Azure DevOps)','Make→Train→Deploy→Maintain'] }
-      ],
-      projects: [
-        { title:'ROBOTICS SIMULATION WITH NVIDIA ISAAC SIM, ISAAC LAB AND PHYSICSAI', tag:'sim', stack:'Isaac Sim · Isaac Lab · ROS 2', points:[
-          'Digital twin of TurtleBot3 for SLAM, navigation, and RL.',
-          'ROS 2 Humble integration for real-time autonomy.',
-          'Physics-accurate env for robust sim-to-real.'
-        ], links:{repo:'#',video:'#'} },
-        { title:'GENAI ROBOTICS SYSTEM: VOICE‑TO‑ROBOT INTELLIGENT AUTOMATION', tag:'vision', stack:'ROS · MoveIt · GPT‑4o · Whisper · YOLOv5 · OPC UA', points:[
-          'TX2‑60 executes pick‑place from natural‑language commands.',
-          'Whisper + GPT‑4o for intent; YOLOv5 + OpenCV for vision.',
-          'ROS + MoveIt planning; OPC UA PLC interface.',
-          'Patterns: (1) Tool Calling; (2) LLM Code Gen + Redis cache.'
-        ], links:{repo:'#',video:'https://youtube.com/shorts/LyenPBrOWpc/'} },
-        { title:'SMARTDOSE 10 FLEX ASSEMBLY LINE', tag:'plc', stack:'Omron PLC · ABB YuMi · ABB GoFa', points:[
-          'Designed robotic workcells; reduced cycle time by 25%.',
-          'Integrated YuMi, GoFa, and TM900 into FPM system.',
-          'RobotStudio & RoboDK for OLP.'
-        ], links:{repo:'#',video:'#'} },
-        { title:'FILL & FINISH AUTOMATION', tag:'plc', stack:'TX60 · Siemens PLC · PROFINET/PROFIBUS · Schunk EGL', points:[
-          'Automated pharmaceutical Fill & Finish; higher quality, lower time.',
-          'Integrated TX60 with pneumatics, EGL grippers, and vacuum.'
-        ], links:{repo:'#',video:'#'} },
-        { title:'INDVENTR‑200 Ventilator & iSAVE', tag:'embedded', stack:'C++ · ESP32 · PID', points:[
-          'Firmware for pressure/flow/volume control with I/O & DAQ.',
-          'PCB design & bench validation; worked with NUS & MIT.'
-        ], links:{repo:'#',video:'#'} },
-        { title:'EMG‑Controlled Prosthetic Arm (CapstoneProject)', tag:'embedded', stack:'Arduino · Servos · 3D Printing', points:[
-          'Myoelectric control from residual‑limb EMG for natural motion.'
-        ], links:{repo:'#',video:'#'} }
-      ],
-      experience: [
-        { company:'Sinergia Media Labs', role:'Senior Robotic Engineer', location:'Bangalore, India', period:'Jan 2021 – Present', bullets:[
-          'Concept development for device assembly lines; integration & testing.',
-          'Cross‑functional collaboration across mech/elec/soft.',
-          'Pneumatic & electrical design for uptime and safety.',
-          'Robots: ABB YuMi, Omron TM900, Staubli TX60 (RobotStudio, VAL3, SRS).',
-          'Embedded: Arduino/ESP32, PCB design; collab with NUS & MIT.',
-          'FMEA/Root‑Cause; HIL validation benches.',
-          'Mentored interns; Agile (Azure DevOps).',
-          'Siemens/Omron PLCs; Festo/Schmalz/Schunk/CKD integration.'
-        ]}
-      ],
-      testimonials: [
-        {
-          name:'Rethnaraj Rambabu, Ph.D.',
-          role:'CEO & Founder, Aruvii Pte. Ltd.',
-          photo:'assets/testimonials/rethnaraj.jpeg',
-          linkedin:'https://www.linkedin.com/in/rethnaraj/',
-          image:'assets/testimonials/rethnaraj-letter.jpg',
-          text:'Hubail K demonstrated exceptional robotics automation expertise, strong work ethic, teamwork, and problem-solving skills, excelling in medical device assembly projects. Highly recommended for future robotics engineering roles with research and development focus.'
-        }
-      ]
-    }
-  </script>
+    <div class="row g-4" id="portfolio-grid">
+      <!-- Project 1 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="physical-ai">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-1.jpg" class="portfolio-img" alt="VLA Pipeline">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">Physical AI</span>
+            <h5 class="fw-bold">SO-101 VLA & GR00T Pipeline</h5>
+            <p class="text-secondary small mb-0">Custom manipulation dataset conversion and VLA policy fine-tuning using NVIDIA Isaac-GR00T and Hugging Face LeRobot.</p>
+          </div>
+        </div>
+      </div>
 
-  <!-- LOGIC -->
-  <script>
-    // --- Smooth scroll (guarded Lenis init with fallback) ---
-    function initSmoothScroll(){
-      if(window.Lenis){
-        try{
-          const lenis = new window.Lenis();
-          function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-          requestAnimationFrame(raf);
-        }catch(e){
-          console.warn('Lenis initialization failed, using CSS smooth scroll.', e);
-          document.documentElement.style.scrollBehavior = 'smooth';
-        }
-      } else {
-        console.warn('Lenis not loaded, using CSS smooth scroll.');
-        document.documentElement.style.scrollBehavior = 'smooth';
-      }
-    }
-    window.addEventListener('load', initSmoothScroll);
+      <!-- Project 2 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="digital-twin">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-2.jpg" class="portfolio-img" alt="Isaac Sim Digital Twin">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">Digital Twin</span>
+            <h5 class="fw-bold">NVIDIA Isaac Sim & Isaac Lab Twin</h5>
+            <p class="text-secondary small mb-0">Physics-accurate OpenUSD digital twin for SLAM, Nav2 autonomous navigation, and reinforcement learning sim-to-real transfer.</p>
+          </div>
+        </div>
+      </div>
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const $ = (q,root=document)=>root.querySelector(q);
-      const $$ = (q,root=document)=>[...root.querySelectorAll(q)];
-      if(typeof DATA==='undefined'){ console.error('DATA missing'); return; }
+      <!-- Project 3 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="physical-ai">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-3.jpg" class="portfolio-img" alt="GenAI Voice-to-Robot">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">GenAI Robotics</span>
+            <h5 class="fw-bold">Voice-to-Robot Automation</h5>
+            <p class="text-secondary small mb-0">LLM tool-calling and dynamic code generation with Redis semantic caching for natural-language robotic pick-and-place.</p>
+          </div>
+        </div>
+      </div>
 
-      // Theme (optional; no button in header yet)
-      const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
-      const saved = localStorage.getItem('theme');
-      if(saved==='dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
-      document.getElementById('themeToggle')?.addEventListener('click', ()=>{
-        document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', document.documentElement.classList.contains('dark')?'dark':'light');
-      });
+      <!-- Project 4 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="industrial">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-4.jpg" class="portfolio-img" alt="SmartDose 10 Flex">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">Industrial</span>
+            <h5 class="fw-bold">SmartDose 10 Flex Assembly Line</h5>
+            <p class="text-secondary small mb-0">ABB YuMi, ABB GoFa, and Omron TM900 multi-robot assembly workcells engineered for pharmaceutical device production.</p>
+          </div>
+        </div>
+      </div>
 
-      // Year & links
-      document.getElementById('year').textContent = new Date().getFullYear();
-      const L = DATA.links;
-      const set=(id,url)=>{ const el=document.getElementById(id); if(el&&url&&url!=='#') el.href=url; };
-      set('githubLink',L.github); set('linkedinLink',L.linkedin); set('youtubeLink',L.youtube); set('cvLink',L.cv); set('calendarLink',L.calendar);
+      <!-- Project 5 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="industrial">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-5.jpg" class="portfolio-img" alt="Fill and Finish Automation">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">Industrial</span>
+            <h5 class="fw-bold">Pharmaceutical Fill & Finish</h5>
+            <p class="text-secondary small mb-0">Stäubli TX60 VAL-3 integration with Siemens S7-GRAPH PLC, PROFINET/PROFIBUS networking, and Schunk EGL grippers.</p>
+          </div>
+        </div>
+      </div>
 
-      // Mobile menu
-      document.getElementById('menuToggle')?.addEventListener('click', ()=> document.getElementById('mobileMenu').classList.toggle('hidden'));
+      <!-- Project 6 -->
+      <div class="col-md-6 col-lg-4 portfolio-item" data-category="industrial">
+        <div class="portfolio-card">
+          <img src="assets/img/portfolio/portfolio-6.jpg" class="portfolio-img" alt="IndVentr-200">
+          <div class="p-4">
+            <span class="tag-chip mb-2 d-inline-block">Embedded / Hardware</span>
+            <h5 class="fw-bold">IndVentr-200 Ventilator (MIT / NUS)</h5>
+            <p class="text-secondary small mb-0">ESP32 PID pressure/flow/volume control firmware and custom PCB design for emergency multi-patient care.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      // Skills
-      const skillsGrid=document.getElementById('skillsGrid');
-      DATA.skills.forEach(({title,items})=>{
-        const card=document.createElement('div'); card.className='tilt relative rounded-2xl border border-slate-800 p-5 bg-slate-950 shadow-soft';
-        card.innerHTML=`<h3 class="font-semibold mb-2">${title}</h3><ul class="text-sm text-slate-300 space-y-1">${items.map(i=>`<li>• ${i}</li>`).join('')}</ul><span class="shine"></span>`;
-        skillsGrid.appendChild(card);
-      });
+<!-- ==================== TESTIMONIAL ==================== -->
+<section style="background: #FFFFFF; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <div class="container">
+    <span class="section-label">Endorsement</span>
+    <h2 class="section-title mb-4">Recommendation</h2>
+    <div class="clean-card">
+      <div class="row align-items-center g-4">
+        <div class="col-md-2 text-center">
+          <img src="assets/testimonials/rethnaraj.jpeg" alt="Rethnaraj" class="rounded-circle object-fit-cover" width="96" height="96">
+        </div>
+        <div class="col-md-10">
+          <p class="fst-italic text-secondary mb-3">
+            "Hubail consistently demonstrated strong technical ownership across robotic system integration, simulation, and commissioning—delivering reliable automation solutions under tight timelines."
+          </p>
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <div>
+              <strong class="d-block">Rethnaraj</strong>
+              <span class="small text-muted">Engineering Leadership</span>
+            </div>
+            <a href="assets/testimonials/rethnaraj-letter.jpg" target="_blank" class="btn btn-outline-custom btn-sm">
+              <i class="bi bi-file-earmark-text me-1"></i>View Recommendation Letter
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      // Projects + filters + tilt
-      const P = DATA.projects; const grid=document.getElementById('projectsGrid'); const empty=document.getElementById('projectsEmpty');
-      function initProjectAnimations(){
-        if(!window.gsap) return;
-        if(window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
-        const items = gsap.utils.toArray('#projectsGrid > *');
-        items.forEach((el)=>{
-          gsap.from(el, {
-            y: 12,
-            opacity: 0,
-            duration: 0.4,
-            ease: 'power1.out',
-            scrollTrigger: window.ScrollTrigger ? { trigger: el, start: 'top 95%', once: true } : undefined,
-            immediateRender: false
-          });
-        });
-      }
-      const render=(tag='all')=>{
-        grid.innerHTML='';
-        const items = P.filter(pr=> tag==='all' || pr.tag===tag);
-        if(items.length===0){ empty.classList.remove('hidden'); return; } else { empty.classList.add('hidden'); }
-        items.forEach(p=>{
-          const card=document.createElement('article'); card.className='tilt relative rounded-2xl border border-slate-800 p-6 bg-slate-900 hover:bg-slate-800 transition shadow-soft';
-          card.innerHTML=`<h3 class="text-lg font-semibold">${p.title}</h3>
-            <div class="text-xs text-accent-400 mt-1">${p.stack}</div>
-            <ul class="mt-3 text-sm text-slate-300 space-y-2">${p.points.map(pt=>`<li>• ${pt}</li>`).join('')}</ul>
-            <div class="mt-4 flex gap-3 text-sm">${p.links.repo?`<a class="underline text-accent-400" href="${p.links.repo}">Repo</a>`:''}${p.links.video?`<a class="underline text-accent-400" href="${p.links.video}">Video</a>`:''}</div>
-            <span class="shine"></span>`;
-          grid.appendChild(card);
-        });
-        attachTilt();
-        initProjectAnimations();
-      };
-      render('all');
-      document.querySelectorAll('[data-filter]').forEach(btn=> btn.addEventListener('click', ()=> render(btn.dataset.filter)));
+<!-- ==================== CONTACT ==================== -->
+<section id="contact">
+  <div class="container text-center">
+    <span class="section-label">Get in Touch</span>
+    <h2 class="section-title mb-3">Let's Build Physical AI Together</h2>
+    <p class="text-secondary mx-auto mb-4" style="max-width: 580px;">
+      Open to collaborating on Physical AI architectures, VLA/GR00T research, OpenUSD Digital Twins, and industrial robotics deployments.
+    </p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="mailto:hubailk7@gmail.com" class="btn btn-primary-custom"><i class="bi bi-envelope me-2"></i>hubailk7@gmail.com</a>
+      <a href="https://linkedin.com/in/hubailk" target="_blank" class="btn btn-outline-custom"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+      <a href="https://github.com/hubailk" target="_blank" class="btn btn-outline-custom"><i class="bi bi-github me-2"></i>GitHub</a>
+    </div>
+  </div>
+</section>
 
-      // Experience timeline
-      const timeline=document.getElementById('timeline');
-      DATA.experience.forEach(exp=>{
-        const li=document.createElement('li'); li.className='mb-8 ml-6';
-        li.innerHTML=`<span class="absolute -left-2 mt-1 w-3 h-3 rounded-full bg-accent-500"></span>
-          <div class="rounded-xl border border-slate-800 p-5 bg-slate-950">
-            <div class="flex flex-wrap items-baseline gap-2"><h3 class="font-semibold">${exp.role}</h3><span class="text-slate-400">· ${exp.company}</span></div>
-            <div class="text-xs text-slate-400">${exp.location} · ${exp.period}</div>
-            <ul class="mt-3 text-sm text-slate-300 space-y-2">${exp.bullets.map(b=>`<li>• ${b}</li>`).join('')}</ul>
-          </div>`;
-        timeline.appendChild(li);
-      });
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <div>© 2026 <strong>Hubail K</strong>. Bengaluru, India.</div>
+    <div class="font-mono small">Physical AI • Robotics • Digital Twins</div>
+  </div>
+</footer>
 
-      // Testimonials
-      let ti=0;
-      const tEl=document.getElementById('testimonialText');
-      const aEl=document.getElementById('testimonialAuthor');
-      const imgEl=document.getElementById('testimonialImage');
-      const photoEl=document.getElementById('testimonialPhoto');
-      const nameEl=document.getElementById('testimonialName');
-      const roleEl=document.getElementById('testimonialRole');
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Portfolio Category Filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
 
-      const PLACEHOLDER_DOC = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520"><rect width="100%" height="100%" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="20">Document preview not available</text></svg>`);
-      const PLACEHOLDER_AVATAR = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><rect width="100%" height="100%" rx="80" fill="%2311222f"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%238aa6c1" font-family="Inter,Arial" font-size="16">No Photo</text></svg>`);
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
 
-      const renderT=()=>{
-        const t=DATA.testimonials[ti] || {};
-        // Text + author (for tests/SEO)
-        tEl.textContent='“'+(t.text||'')+'”';
-        aEl.textContent=`${t.name||''} — ${t.role||''}`;
-        // Image preview card (fallback if missing)
-        imgEl.onerror = ()=>{ imgEl.src = PLACEHOLDER_DOC; };
-        imgEl.src = t.image || PLACEHOLDER_DOC;
-        imgEl.classList.remove('hidden');
-        // Avatar + name/role/link (fallback if missing)
-        photoEl.onerror = ()=>{ photoEl.src = PLACEHOLDER_AVATAR; };
-        photoEl.src = t.photo || PLACEHOLDER_AVATAR;
-        photoEl.classList.remove('hidden');
-        nameEl.textContent=t.name || '—';
-        nameEl.href=(t.linkedin && t.linkedin.startsWith('http')) ? t.linkedin : '#';
-        roleEl.textContent=t.role || '';
-      };
-      renderT();
-      document.getElementById('prevTest')?.addEventListener('click', ()=>{ti=(ti-1+DATA.testimonials.length)%DATA.testimonials.length; renderT();});
-      document.getElementById('nextTest')?.addEventListener('click', ()=>{ti=(ti+1)%DATA.testimonials.length; renderT();});
-
-      // Terminal: type + commands
-      const typed=document.getElementById('typed'); const out=document.getElementById('terminalOutput'); const input=document.getElementById('termInput');
-      const bootCmd='sudo apt-get install hubail';
-      const bootLines=[
-        'Reading package lists... Done',
-        'Building dependency tree',
-        'Reading state information... Done',
-        'The following NEW packages will be installed:',
-        '  hubail (Robotics & Automation Engineer)',
-        '',
-        'Setting up hubail...',
-        '• ROS 2 · Isaac Sim/Lab · Physical AI',
-        '• PLCs (Siemens/Omron), Pneumatics, Schunk/Festo',
-        '• Python, C++, RAPID, VAL‑3',
-        '• Make → Train → Deploy → Maintain',
-        '',
-        'hubail status: READY — email: hubailk7@gmail.com — LinkedIn: linkedin.com/in/hubailk'
-      ];
-      let i=0; const type=()=>{ if(i<=bootCmd.length){ typed.textContent=bootCmd.slice(0,i++); requestAnimationFrame(type);} else { typed.classList.remove('caret'); printLines(bootLines,60);} }; type();
-      function printLines(lines,delay=60, idx=0){ if(idx>=lines.length) return; out.textContent += (idx?'\n':'')+lines[idx]; setTimeout(()=>printLines(lines,delay,idx+1), delay); }
-      const help=`Available commands:\n  help      — show this help\n  skills    — list core skills\n  projects  — show featured project titles\n  contact   — jump to contact section`;
-      input.addEventListener('keydown', (e)=>{
-        if(e.key==='Enter'){
-          const cmd=input.value.trim().toLowerCase();
-          if(!cmd) return; out.textContent += `\n$ ${cmd}\n`;
-          if(cmd==='help'){ out.textContent += help; }
-          else if(cmd==='skills'){ out.textContent += DATA.skills.map(s=>`- ${s.title}: ${s.items.slice(0,5).join(', ')}…`).join('\n'); }
-          else if(cmd==='projects'){ out.textContent += DATA.projects.map(p=>`- ${p.title}`).join('\n'); }
-          else if(cmd==='contact'){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }
-          else { out.textContent += `Unknown command: ${cmd}. Type 'help'.`; }
-          input.value='';
+      items.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
         }
       });
-
-      // Card tilt/shine (fixed syntax)
-      function attachTilt(){
-        // Disable tilt on touch devices to avoid jank/misalignment
-        if (window.matchMedia && matchMedia('(pointer:coarse)').matches) return;
-        document.querySelectorAll('.tilt').forEach(card=>{
-          card.addEventListener('pointermove', (e)=>{
-            const r=card.getBoundingClientRect();
-            const mx=(e.clientX - r.left)/r.width*100; const my=(e.clientY - r.top)/r.height*100;
-            card.style.setProperty('--mx', mx+'%'); card.style.setProperty('--my', my+'%');
-            const rx=((e.clientY - r.top) - r.height/2)/20; const ry=-( (e.clientX - r.left) - r.width/2)/20;
-            card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
-          });
-          card.addEventListener('pointerleave', ()=> card.style.transform='');
-        });
-      }
-
-      // Particles background (simple, lightweight)
-      const canvas=document.getElementById('fx'); const ctx=canvas.getContext('2d'); let W,H; const particles=[]; const N=100;
-      function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
-      addEventListener('resize', resize); resize();
-      for(let i=0;i<N;i++) particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
-      function loop(){ ctx.clearRect(0,0,W,H); ctx.fillStyle='#0b1220'; ctx.fillRect(0,0,W,H);
-        ctx.fillStyle='#0f90ff22';
-        particles.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1; ctx.beginPath(); ctx.arc(p.x,p.y,1.2,0,Math.PI*2); ctx.fill(); });
-        requestAnimationFrame(loop);
-      } loop();
-
-      // GSAP entrance animations for hero (non-blocking)
-      if(window.gsap){
-        gsap.from('#top h1',{y:10,opacity:0,duration:.6});
-        gsap.from('#top p',{y:10,opacity:0,stagger:.1,duration:.6,delay:.1});
-      }
-
-      // Smoke tests (kept) + added a few more
-      try{
-        const results=[]; const assert=(name,cond)=>results.push({test:name,pass:!!cond});
-        // Existing
-        assert('DATA object defined', typeof DATA==='object');
-        assert('Skills rendered', document.getElementById('skillsGrid')?.children.length===DATA.skills.length);
-        assert('Projects rendered (all)', document.getElementById('projectsGrid')?.children.length>0);
-        assert('Testimonials present', (document.getElementById('testimonialText')?.textContent||'').length>0);
-        assert('Year set', (document.getElementById('year')?.textContent||'').trim().length===4);
-        // Additional
-        assert('Terminal input exists', !!document.getElementById('termInput'));
-        assert('Filter buttons exist', document.querySelectorAll('[data-filter]').length>=4);
-        const sb = getComputedStyle(document.documentElement).scrollBehavior;
-        assert('Lenis available or CSS smooth-scroll fallback active', (typeof window.Lenis==='function') || sb==='smooth');
-        assert('Call link uses tel:', document.getElementById('calendarLink')?.href.startsWith('tel:'));
-        assert('CV link set to PDF', /\.pdf(\?|#|$)/i.test(document.getElementById('cvLink')?.getAttribute('href')||''));
-        console.table(results);
-      }catch(e){ console.error('Smoke tests failed:', e); }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
-
